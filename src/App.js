@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import Task from './components/task/task'
 import './App.css';
 
 function App() {
+  const [task, setTask] = useState([]);
+
+  useEffect(() => {
+      async function loadTask() {
+          const response = await localStorage.getItem(task)
+      }
+  })
+
+  async function handleSaveTask(data) {
+    const response = await localStorage.setItem(response.data)
+
+    setTask([...task, response.data])
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      <div className="app-content">
+          <aside>
+              < Task onSubmit={handleSaveTask} /> 
+          </aside>
+      </div>
+  )
 }
 
 export default App;
