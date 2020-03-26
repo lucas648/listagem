@@ -20,7 +20,7 @@ function Task() {
         return(
           <div>
             <strong>Digite seus dados</strong>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={() => handleSubmit}>
               <div className="input-block">
                 <label htmlFor="description">Descrição</label>
                 <textarea 

@@ -6,8 +6,9 @@ function App() {
   const [task, setTask] = useState([]);
 
   async function handleSaveTask(data) {
-    const response = await localStorage.setItem(response.data)
+    const response = await localStorage.setItem("task", response.data)
 
+    console.log(response.data)
     setTask([...task, response.data])
   }
 
