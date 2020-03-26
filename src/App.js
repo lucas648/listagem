@@ -1,24 +1,33 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Task from './components/task/task'
+import api from './services/api'
 import './App.css';
 
 function App() {
-  const [task, setTask] = useState([]);
+    const [task, setTask] = useState([]);
 
-  async function handleSaveTask(data) {
-    const response = await localStorage.setItem("task", response.data)
+    useEffect(() => {
+      async function loadUsers() {
+        const response = await applicationCache.get('/task');
 
-    console.log(response.data)
-    setTask([...task, response.data])
-  }
+        setTask(response.data);
+      }
+    }))
 
-  return (
-      <div className="app-content">
-          <aside>
-              < Task onSubmit={handleSaveTask} /> 
-          </aside>
-      </div>
-  )
+    async function handleAddTask(data) {
+
+      const response = await api.post('/task', data )
+
+      setTask([...task, response.data]);
+    }
+
+    return (
+        <div className="app-container">
+            <aside>
+                <Task onSubmit={handleAddTask} />
+            </aside>
+        </div>
+    )
 }
 
 export default App;

@@ -16,6 +16,8 @@ function Task() {
 
         setdescription('');
         setresponsible('');
+
+        const response = localStorage.setItem("task", response.data)
     }
         return(
           <div>
