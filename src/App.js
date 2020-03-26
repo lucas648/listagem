@@ -5,12 +5,6 @@ import './App.css';
 function App() {
   const [task, setTask] = useState([]);
 
-  useEffect(() => {
-      async function loadTask() {
-          const response = await localStorage.getItem(task)
-      }
-  })
-
   async function handleSaveTask(data) {
     const response = await localStorage.setItem(response.data)
 

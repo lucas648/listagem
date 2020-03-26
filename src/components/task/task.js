@@ -1,8 +1,9 @@
-import {React, useState} from 'react';
+import React, {useState} from 'react';
 
 
-function task() {
+function Task() {
     const [description  , setdescription] = useState('');
+    const [responsible, setresponsible] = useState('');
 
     
     async function handleSubmit(e) {
@@ -17,6 +18,7 @@ function task() {
         setresponsible('');
     }
         return(
+          <div>
             <strong>Digite seus dados</strong>
             <form onSubmit={handleSubmit}>
               <div className="input-block">
@@ -24,7 +26,7 @@ function task() {
                 <textarea 
                   name="description" 
                   id="description" 
-                  value={username}
+                  value={description}
                   onChange={ e => setdescription(e.target.value)}
                   required
                 ></textarea>
@@ -40,7 +42,9 @@ function task() {
                   required
                 />
               </div>
+              <button type="submit">Enviar</button>
             </form>
+          </div>
         );
 };
    
